@@ -1,6 +1,6 @@
 FROM ruby:2.2.4
 
-RUN apt-get update
+RUN apt-get clean && apt-get update
 
 RUN apt-get install -y curl wget libpq-dev libpq5 libpqxx-4.0 \
         libpqxx-dev memcached nodejs nodejs-dev redis-server libxml2 libsasl2-2 \
@@ -14,5 +14,7 @@ ADD . /app
 WORKDIR /app
 
 RUN bundle install
+
+ENV RACK_ENV production
 
 ENTRYPOINT foreman start
