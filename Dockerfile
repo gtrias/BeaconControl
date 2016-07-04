@@ -19,4 +19,4 @@ RUN gem install bundler
 ENV RAILS_ENV production
 ENV RACK_ENV production
 
-ENTRYPOINT foreman start
+ENTRYPOINT entrypoint.sh
